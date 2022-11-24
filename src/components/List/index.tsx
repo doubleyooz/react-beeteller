@@ -95,6 +95,7 @@ const DropdownNav = (props: {
 };
 
 const List = () => {
+    const { t, i18n } = useTranslation();
     const [currencies, setCurrencies] = useState<string[]>([
         'USD-BRL',
         'EUR-BRL',

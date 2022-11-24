@@ -128,7 +128,7 @@ $option-size: calc(1000vw / 1440 + 8px);
     }
 }
 
-@media screen and(max-width: 720px) {
+@media screen and (max-width: 720px) {
     .list {
         .table-head {
             .prices {
@@ -149,7 +149,7 @@ $option-size: calc(1000vw / 1440 + 8px);
     }
 }
 
-@media screen and(max-width: 500px) {
+@media screen and (max-width: 500px) {
     .header {
         .dropdown-nav {
             .currency-container {
@@ -177,7 +177,7 @@ $option-size: calc(1000vw / 1440 + 8px);
     }
 }
 
-@media screen and(max-width: 425px) {
+@media screen and (max-width: 425px) {
     .home-container {
         .list {
             .table-head {
