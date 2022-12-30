@@ -40,7 +40,7 @@ const Dashboard = React.memo(() => {
         try {
             const response = await getBoxesData(token);
 
-            setBoxes(response.data.data);           
+            setBoxes(response.data.data);
             if (response.data.metadata) setToken(response.data.metadata);
         } catch (e) {
             try {
@@ -98,14 +98,18 @@ const Dashboard = React.memo(() => {
             </div>
             <div className="cards">
                 {!loading ? (
-                    boxes.map((item: box, index: number) => (
-                        <Box
-                            name={item.code + '/' + item.codein}
-                            value={item.bid}
-                            description={currentCurrency(item.name)}
-                            key={index}
-                        />
-                    ))
+                    boxes ? (
+                        boxes.map((item: box, index: number) => (
+                            <Box
+                                name={item.code + '/' + item.codein}
+                                value={item.bid}
+                                description={currentCurrency(item.name)}
+                                key={index}
+                            />
+                        ))
+                    ) : (
+                        <div></div>
+                    )
                 ) : (
                     <div> Loading...</div>
                 )}
