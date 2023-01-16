@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import './styles.scss';
 
 const LoginPage = () => {
+    const [statusError, setStatusError] = useState(null);
     const { t } = useTranslation();
     const { handleSignIn, token } = useContext(AuthContext);
     const nav = useNavigate();
@@ -23,7 +24,7 @@ const LoginPage = () => {
             .string()
             .min(8, t('yup.password.short'))
             .matches(
-                /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/,
                 t('yup.password.weak')
             ),
     });
@@ -43,11 +44,14 @@ const LoginPage = () => {
     });
 
     const onSubmit = handleSubmit(async (data: User) => {
+        if (statusError) setStatusError(null);
         handleSignIn(data.email, data.password)
             .then(() => {
                 nav('/');
             })
             .catch((err) => {
+                if (err.response.status === 401)
+                    setStatusError(t('login.submit.401'));
                 console.log(err);
             });
     });
@@ -101,7 +105,7 @@ const LoginPage = () => {
                             name="password"
                             placeholder={t('login.password.placeholder')}
                             style={
-                                errors.password
+                                errors.password || statusError
                                     ? { borderColor: '#ff0000' }
                                     : {}
                             }
@@ -109,6 +113,11 @@ const LoginPage = () => {
                         {errors.password && (
                             <div className="error">
                                 <span>{errors.password.message}</span>
+                            </div>
+                        )}
+                        {statusError && (
+                            <div className="error">
+                                <span>{statusError}</span>
                             </div>
                         )}
                     </div>

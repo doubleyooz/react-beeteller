@@ -57,6 +57,7 @@ i18n.use(LanguageDetector)
                         'password.placeholder': 'Enter Password',
                         'password.forgot': 'Forgot password?',
 
+                        'submit.401': "Email and password don't match",
                         'submit.button': 'Login',
                     },
                     navbar: {
@@ -111,6 +112,7 @@ i18n.use(LanguageDetector)
                         'password.placeholder': 'Digite a senha',
                         'password.forgot': 'Esqueceu a senha?',
 
+                        'submit.401': 'Email e senha não conferem',
                         'submit.button': 'Login',
                     },
                     navbar: {
