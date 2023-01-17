@@ -50,8 +50,9 @@ const LoginPage = () => {
                 nav('/');
             })
             .catch((err) => {
-                if (err.response.status === 401)
-                    setStatusError(t('login.submit.401'));
+                if (err.response)
+                    if (err.response.status === 401)
+                        setStatusError(t('login.submit.401'));
                 console.log(err);
             });
     });
