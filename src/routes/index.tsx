@@ -16,17 +16,17 @@ const Paths: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        checkLanguage().then().catch();
-        if (token === '') {
-            refreshToken()
-                .then((result) => {
+        const checkAuth = async () => {
+            if (!token) {
+                try {
+                    const result = await refreshToken();
                     if (result) setToken(result.data.accessToken);
-                    setLoading(false);
-                })
-                .catch((err) => {
-                    setLoading(false);
-                });
-        } else setLoading(false);
+                } catch {}
+            }
+            setLoading(false);
+        };
+        checkLanguage().then().catch();
+        checkAuth();
     }, []);
 
     return (
