@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Item from '../../components/Item';
 import AuthContext from '../../context/AuthProvider';
 import { getLast, refreshToken } from '../../services';
+import Loading from '../../shared/Loading';
 import './styles.scss';
 
 interface chewed {
@@ -318,7 +319,7 @@ const Items = (props: { currency: string }) => {
                     />
                 ))
             ) : (
-                <div> Loading...</div>
+                <Loading/>
             )}
         </div>
     );

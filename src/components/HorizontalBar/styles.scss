@@ -71,6 +71,7 @@ $header-hmarging: calc(2000vw / 1440 + 12px);
 
         .languages-container {
             .language {
+                cursor: pointer;
                 span {
                     font: $text-size 'Roboto', sans-serif;
                     line-height: 21px;

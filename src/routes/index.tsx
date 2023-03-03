@@ -9,6 +9,7 @@ import NotFound from '../pages/NotFound';
 import AuthContext from '../context/AuthProvider';
 import LanguageContext from '../context/LanguageProvider';
 import { refreshToken } from '../services';
+import Loading from '../shared/Loading';
 
 const Paths: React.FC = () => {
     const { token, setToken } = useContext(AuthContext);
@@ -41,7 +42,7 @@ const Paths: React.FC = () => {
                     </Routes>
                 </BrowserRouter>
             ) : (
-                <div>Loading...</div>
+                <Loading/>
             )}
         </div>
     );

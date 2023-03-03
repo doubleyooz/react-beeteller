@@ -8,6 +8,7 @@ import { getBoxesData, refreshToken, revokeToken } from '../../services';
 import { useTranslation } from 'react-i18next';
 
 import './styles.scss';
+import Loading from '../../shared/Loading';
 
 interface box {
     name: string;
@@ -111,7 +112,7 @@ const Dashboard = React.memo(() => {
                         <div></div>
                     )
                 ) : (
-                    <div> Loading...</div>
+                    <Loading/>
                 )}
             </div>
         </div>

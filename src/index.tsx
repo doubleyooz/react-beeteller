@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './I18n';
+import { AuthProvider } from './context/AuthProvider';
+import { LanguageProvider } from './context/LanguageProvider';
+import Routes from './routes';
+import './global.scss';
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <AuthProvider>
+            <LanguageProvider>
+                <Routes />
+            </LanguageProvider>
+        </AuthProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );
